@@ -100,29 +100,12 @@
                 FileName = "openFileDialog1"
             };
             SuspendLayout();
-            // 
-            // genAlphabets
-            //
+            // Add Listeners to make UI elements function
             genAlphabets.Click += genAlphabets_Click;
-            // 
-            // outAlphabets
-            // 
             outAlphabets.Click += outAlphabets_Click;
-            // 
-            // inAlphabets
-            //
             inAlphabets.Click += inAlphabets_Click;
-            // 
-            // encodeText
-            //
             encodeText.Click += encipherText_Click;
-            // 
-            // decodeText
-            //
             decodeText.Click += decipherText_Click;
-            // 
-            // openFileDialog1
-            //
             openFileDialog1.FileOk += openFileDialog1_FileOk;
             // 
             // Form1
