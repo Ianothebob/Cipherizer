@@ -41,6 +41,7 @@
             // textBox1
             // 
             textBox1.BackColor = SystemColors.ControlDark;
+            textBox1.Anchor = AnchorStyles.None;
             textBox1.Location = new Point(34, 12);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
@@ -50,6 +51,7 @@
             // genAlphabets
             // 
             genAlphabets.BackColor = SystemColors.ControlDark;
+            genAlphabets.Anchor = AnchorStyles.None;
             genAlphabets.ForeColor = SystemColors.ControlLight;
             genAlphabets.Location = new Point(287, 142);
             genAlphabets.Name = "genAlphabets";
@@ -62,6 +64,7 @@
             // outAlphabets
             // 
             outAlphabets.BackColor = SystemColors.ControlDark;
+            outAlphabets.Anchor = AnchorStyles.None;
             outAlphabets.Location = new Point(287, 216);
             outAlphabets.Name = "outAlphabets";
             outAlphabets.Size = new Size(239, 71);
@@ -73,6 +76,7 @@
             // inAlphabets
             // 
             inAlphabets.BackColor = SystemColors.ControlDark;
+            inAlphabets.Anchor = AnchorStyles.None;
             inAlphabets.Location = new Point(287, 290);
             inAlphabets.Name = "inAlphabets";
             inAlphabets.Size = new Size(239, 71);
@@ -84,6 +88,7 @@
             // encodeText
             // 
             encodeText.BackColor = SystemColors.ControlDark;
+            encodeText.Anchor = AnchorStyles.None;
             encodeText.Location = new Point(287, 364);
             encodeText.Name = "encodeText";
             encodeText.Size = new Size(239, 71);
@@ -95,6 +100,7 @@
             // decodeText
             // 
             decodeText.BackColor = SystemColors.ControlDark;
+            decodeText.Anchor = AnchorStyles.None;
             decodeText.Location = new Point(287, 438);
             decodeText.Name = "decodeText";
             decodeText.Size = new Size(239, 71);
