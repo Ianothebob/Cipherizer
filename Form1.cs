@@ -33,7 +33,7 @@ namespace Cipherizer
             foreach (char i in inString.ToCharArray())
             {
                 int[] alphabet = alphabetList[count % 30];
-                stringCharacters.Add((char)(Array.IndexOf(alphabet,i) + 32));
+                stringCharacters.Add((char)(Array.IndexOf(alphabet, i) + 32));
                 ++count;
             }
             String outString = new string(stringCharacters.ToArray());
