@@ -1,0 +1,1 @@
+Takes a 97 character chunk out of the ASCII spec, shuffles it, and adds 30 other shuffled versions to the alphabets. THen it uses shuffled alphabet 1 to encode character 1, alphabet 2 for char 2, alphabet 30 for char 30, alphabet 1 for char 31, etc.
