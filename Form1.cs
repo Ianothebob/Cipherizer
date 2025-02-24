@@ -1,35 +1,28 @@
 using Microsoft.VisualBasic.Logging;
-using System.CodeDom;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading;
 
 namespace Cipherizer
 {
     public partial class Form1 : Form
     {
-        static List<List<int>> alphabetList = [];
+        static int[][] alphabetList = [];
         static Log Logger = new Log();
         //const RandomNumberGenerator numGen = RandomNumberGenerator.GetInt32;
         public Form1()
         {
             InitializeComponent();
         }
-        private static List<List<int>> GenAlphabets(int num)
+        private static int[][] GenAlphabets(int num)
         {
-            List<List<int>> alphabetsOut = [];
+            int[][] alphabetsOut = [];
             for (int i = 0; i < num; i++)
             {
-                List<int> chars = Enumerable.Range(32, 96).ToList();
-                Span<int> charSpan = CollectionsMarshal.AsSpan(chars);
+                int[] chars = Enumerable.Range(32, 96).ToArray();
+                Span<int> charSpan = chars;
                 RandomNumberGenerator.Shuffle(charSpan);
-                chars = charSpan.ToArray().ToList();
-                alphabetsOut.Add(chars);
+                chars = charSpan.ToArray();
+                alphabetsOut = (int[][])alphabetsOut.Append(chars);
             }
             return alphabetsOut;
         }
@@ -39,8 +32,8 @@ namespace Cipherizer
             int count = 0;
             foreach (char i in inString.ToCharArray())
             {
-                List<int> alphabet = alphabetList[count % 30];
-                stringCharacters.Add((char)(alphabet.IndexOf(i) + 32));
+                int[] alphabet = alphabetList[count % 30];
+                stringCharacters.Add((char)(Array.IndexOf(alphabet,i) + 32));
                 ++count;
             }
             String outString = new string(stringCharacters.ToArray());
@@ -49,12 +42,12 @@ namespace Cipherizer
         public static string DecodeString(string inString)
         {
             int count = 0;
-            List<char> stringCharacters = [];
+            char[] stringCharacters = [];
             foreach (char curChar in inString.ToCharArray())
             {
-                List<int> alphabet = alphabetList[count % 30];
+                int[] alphabet = alphabetList[count % 30];
                 int asciiCode = (int)curChar - 32;
-                stringCharacters.Add((char)alphabet[asciiCode]);
+                stringCharacters.Append((char)alphabet[asciiCode]);
                 ++count;
                 //i = alphabet.get();
             }
@@ -64,7 +57,7 @@ namespace Cipherizer
         private void genAlphabets_Click(object sender, EventArgs e)
         {
             alphabetList = GenAlphabets(30);
-            Logger.WriteEntry(alphabetList[0].Count.ToString());
+            Logger.WriteEntry(alphabetList[0].Length.ToString());
         }
         private void outAlphabets_Click(object sender, EventArgs e)
         {
@@ -93,7 +86,7 @@ namespace Cipherizer
                 // Saves the Image in the appropriate ImageFormat based upon the
                 // File type selected in the dialog box.
                 // NOTE that the FilterIndex property is one-based.
-                alphabetList = JsonSerializer.Deserialize(fs, typeof(List<List<int>>)) as List<List<int>>;
+                alphabetList = (int[][])JsonSerializer.Deserialize(fs, typeof(int[][]));
 
                 fs.Close();
             }

@@ -9,6 +9,8 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <DebugType>embedded</DebugType>
+    <SignAssembly>True</SignAssembly>
+    <DelaySign>False</DelaySign>
   </PropertyGroup>
 
 </Project>
